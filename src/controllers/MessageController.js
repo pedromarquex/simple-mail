@@ -50,7 +50,7 @@ class MessageController {
     async update(request, response, id) {
         const data = await getPostData(request);
 
-        await knex('messages').where({ id }).update({ ...data }).returning('*');
+        await knex('messages').where({ id }).update({ ...data });
 
         const updatedMessage = await knex.select('*').from('messages').where({ id })
 
